@@ -238,39 +238,7 @@ box-shadow: inset 5px 5px 10px #a8a8a8,
                  if((clicked.getAttribute('content'))=='1'){
                  selected.style='scale:1';
                    selected=clicked;
-                   row=parseInt(selected.getAttribute('row'));
-                  column=parseInt(selected.getAttribute('column'));
-                 console.log(row +'-' +column);
-                   row_=row+1;
-                   col=column-1;
-                   row__=row-1;
-                   col_=column+1;
-                   if (((row + column) % 2) == 0) {
-    arr = [
-        row_ + '' + col_,
-        row_ + '' + col,
-        row_ + '' + column,
-        row__ + '' + col,
-        row__ + '' + col_,
-        row__ + '' + column,
-        row + '' + col_,
-        row + '' + col
-    ];
-    console.log(arr);
-    const indexesToRemove = [];
-    arr.forEach((element, index) => {
-        if (parseInt(element) < 0 || parseInt(element) >= 5 || (element.includes('-') && element.indexOf('-') !== 0 && element.lastIndexOf('-') !== element.length - 1)) {
-            indexesToRemove.push(index);
-        }
-    });
-
-    for (let i = indexesToRemove.length - 1; i >= 0; i--) {
-        arr.splice(indexesToRemove[i], 1);
-    }
-    for (const p of arr) {
-        document.getElementById(p).style = 'background-color:green';
-    }
-}
+                   
                    selected.style='scale:2';
                    isclicked=1;
                    k=x;
