@@ -1,55 +1,88 @@
+body {
+    background: #555;
+}
 
-body{
-    background:#555;
+* {
+    color: white; 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
 }
-*{
-color:white; font-family:'montserrat',sans-serif;
-font-weight:500;
+
+h1, p {
+    text-align: center;
 }
-h1,p{
-  text-align: center;
+
+.container1 {
+    margin: 50px auto;
+    padding: 25px;
+    font-size: 25px;
+    width: 80%;
+    border: 1px solid black;
+    border-radius: 50px;
+    display: none;
 }
-.container1{
-  margin: 50px auto;
-  padding:25px;
-  font-size:25px;
-  width:80%;
-  border:1px solid black;
-  border-radius:50px;
-}
+
 .container {
-width:100%;
-place-content: center;
-display: grid;
-grid-template-columns: repeat(5, 30px);
-grid-template-rows: repeat(5,30px);
-gap: 40px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    place-content: center;
+    display: grid;
+    grid-template-columns: repeat(5, 30px);
+    grid-template-rows: repeat(5, 30px);
+    gap: 40px;
 }
-.goat{
-width:60px;
-height:60px;
-font-size:50px;
+
+.goat {
+    width: 60px;
+    height: 60px;
+    font-size: 50px;
 }
+
 .box {
-width: 30px;
-height: 30px;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:30px;
-overflow:visible;
-text-align:center;
-position: relative;
-border-radius:22px;
-background: gray;
-cursor: pointer;
-box-shadow: inset 5px 5px 10px #a8a8a8,
-      inset -5px -5px 10px #ffffff;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    overflow: visible;
+    text-align: center;
+    position: relative;
+    border-radius: 22px;
+    background: gray;
+    cursor: pointer;
+    box-shadow: inset 5px 5px 10px #a8a8a8, inset -5px -5px 10px #ffffff;
 }
+
 canvas {
-position: absolute;
-top:23%;
-left:50%;
-transform: translate(-50%,0);
-display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+   /* Center the canvas */
+}
+
+@media (max-width: 768px) {
+    .container {
+        gap: 20px;
+    }
+
+    .box {
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
+    }
+
+    .goat {
+        width: 40px;
+        height: 40px;
+        font-size: 40px;
+    }
+
+    .container1 {
+        font-size: 20px;
+    }
 }
