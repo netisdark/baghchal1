@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page title</title>
+    <style>
+      
+        body{
+            background:#555;
+        }
+        h1{
+            text-align: center;
+        }
+        .box{
+            width:50px;
+            height:50px;
+            background:gray;
+            border-radius:50%;
+        }
+        #all{
+        position: absolute;
+        z-index:2;
+            display:flex;
+            flex-direction:column;
+            justify-content: space-evenly;
+            align-items: center;
+            height:80vh;
+            width:100%;
+        }
+        #all div{
+            display:flex;
+            font-size:50px;
+            text-align:center;
+        }
+        #two{
+           width:100%;
+            justify-content:space-evenly;
+        }
+        #three,#four{
+           width:100%;
+            justify-content:space-between;
+        }
+        canvas{
+            position: absolute;
+            top:170px;
+            left:15px;
+            z-index:-1;
+        }
+    </style>
+</head>
+<body>
+    <h1>BAGHCHAL</h1>
+    <div id="all" class='container'>
+        <div id="one"></div>
+        <div id="two"></div>
+        <div id="three"></div>
+        <div id="four"></div>
+    </div>
+    <canvas id='canvas' width='450' height='450'></canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        ctx.moveTo(205, 10);
+        ctx.lineTo(315, 150);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(205, 10);
+        ctx.lineTo(95, 150);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(205, 150);
+        ctx.lineTo(205, 10);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(205, 450);
+        ctx.lineTo(205, 300);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(385,435);
+        ctx.lineTo(25, 435);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(95, 150);
+        ctx.lineTo(315, 150);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(315, 150);
+        ctx.lineTo(385, 300);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(385, 300);
+        ctx.lineTo(25, 300);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(25, 300);
+        ctx.lineTo(95, 150);
+        ctx.stroke();
+        
+        var div,isclicked=0,clicked,selected;
+        const board=[
+            ["1"],
+            ["0","0","0"],
+            ["0","0","0"],
+            ["2","2","2"]
+        ];
+        const arr=[1,3,3,3];
+        for(let i=0;i<4;i++){
+            for(let j=0;j<arr[i];j++){
+                div=document.createElement('div');
+                div.setAttribute('class','box');
+                div.setAttribute('content',parseInt(board[i][j]));
+                div.addEventListener('click', function (e){
+                    clicked=e.target;
+                  
+                    if(isclicked==1){
+                        clicked.innerHTML=selected.innerHTML;
+                        selected.innerHTML='';
+                        isclicked=0;
+                    }else{
+                        selected=clicked;
+                        isclicked=1;
+                    }
+                });
+                if(i==0){
+                    document.getElementById('one').appendChild(div);
+                }
+                else if(i==1){
+                    document.getElementById('two').appendChild(div);
+                }
+                else if(i==2){
+                    document.getElementById('three').appendChild(div);
+                }
+                else{
+                    document.getElementById('four').appendChild(div);
+                }
+                if((parseInt(board[i][j]))==1){
+                    div.innerHTML="&#128047";
+                }
+                if (parseInt(board[i][j]) === 2) {
+            div.innerHTML = "&#128016";
+        }
+            }
+        }
+    </script>
+</body>
+</html>

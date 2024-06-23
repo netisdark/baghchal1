@@ -4,10 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BAGHCHAL</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    
   <style>
-  
+      body{
+          background:#555;
+      }
+  *{
+     color:white; font-family:'montserrat',sans-serif;
+      font-weight:500;
+  }
     h1,p{
         text-align: center;
+    }
+    .container1{
+        margin: 50px auto;
+        padding:25px;
+        font-size:25px;
+        width:80%;
+        border:1px solid black;
+        border-radius:50px;
     }
     .container {
     width:100%;
@@ -25,12 +41,15 @@
     .box {
       width: 30px;
       height: 30px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
       font-size:30px;
       overflow:visible;
       text-align:center;
       position: relative;
-      border-radius: 22px;
-background: #e0e0e0;
+      border-radius:22px;
+background: gray;
 box-shadow: inset 5px 5px 10px #a8a8a8,
             inset -5px -5px 10px #ffffff;
     }
@@ -52,7 +71,16 @@ box-shadow: inset 5px 5px 10px #a8a8a8,
  
   </div>
 <div class="container1">
-  
+<details>
+    <summary>About Baghchal</summary>
+    Baghchal Game: Baghchal game also known as Bagchal game is one of the anicient board game played in Nepal and some parts of India as well. Baghchal game consists of 4 tigers and 20 goats. It is also known as Tiger and Goat game. Both Tiger and Goat move through the straight line of Bagchal board. The difference is Tiger can jump Goats if there is empty place following the goat on a straight line. Tiger wins by eating atleast 9 Goats by jumping and Goats win by trapping all four Tigers. Baghchal game can be played online with this website.
+Winning Condition for Tiger:
+
+When atleast 9 Goats are Killed.
+Winning Condition for Tiger:
+
+When all four Tigers are Trapped. Bagh-Chal (Nepali: बाघ चाल bāgh cāl, Newari:धुँ कासा dhun kasa meaning "Tiger game", ) is a strategic, two-player board game that originates in Nepal. The game is believed to have been created by Mandhodari, wife of Ravan. Books cite that Mandhodari was highly intelligent and played this game while being alone in her palace in Lanka. The game is asymmetric in that one player controls four tigers and the other player controls up to twenty goats. The tigers 'hunt' the goats while the goats attempt to block the tigers' movements. This game is also seen in southern India with different board but the rules are same. The game is played on a five by five point grid, like alquerque (an ancestor of draughts or checkers). Pieces are positioned at the intersection of the lines and not inside the areas delimited by them. Directions of valid movement between these points are connected by lines. The game play takes place in two phases. In the first phase the goats are placed on the board while the tigers are moved. In the second phase both the goats and the tigers are moved. For the tigers, the objective is to "capture" five goats to win. Capturing is performed as in alquerque and draughts, by jumping over the goats, although capturing is not obligatory. The goats win by blocking all the tigers' legal moves. It has many similarities to the Indian game Aadu puli attam (goat-tiger game), though the board is different. - Reference Wikipedia.org
+</details>
 </div>
   <script>
       var canvas = document.getElementById('canvas');
@@ -147,6 +175,40 @@ box-shadow: inset 5px 5px 10px #a8a8a8,
         ['0','0','0','0','0'],
         ['1','0','0','0','1']
     ];
+    const data = [
+  ['A', 'B', 'C', 'D', 'E'],
+  ['F', 'G', 'H', 'I', 'J'],
+  ['K', 'L', 'M', 'N', 'O'],
+  ['P', 'Q', 'R', 'S', 'T'],
+  ['U', 'V', 'W', 'X', 'Y']
+];
+const graph = {
+  A: ['B', 'G', 'F'],
+  B: ['A', 'G', 'C'],
+  C: ['C', 'B', 'H', 'D', 'I'],
+  D: ['C', 'I', 'E'],
+  E: ['D', 'I', 'J'],
+  F: ['A', 'G', 'K'],
+  G: ['A', 'B', 'C', 'F', 'H', 'K', 'L', 'M'],
+  H: ['C', 'G', 'I', 'M'],
+  I: ['C', 'D', 'E', 'H', 'J', 'M', 'N', 'O'],
+  J: ['E', 'I', 'O'],
+  K: ['F', 'G', 'L', 'P', 'Q'],
+  L: ['K', 'G', 'M', 'Q'],
+  M: ['G', 'H', 'I', 'L', 'N', 'Q', 'R', 'S'],
+  N: ['M', 'I', 'O', 'S'],
+  O: ['I', 'J', 'N', 'S', 'T'],
+  P: ['K', 'L', 'Q', 'U', 'V'],
+  Q: ['K', 'L', 'M', 'P', 'R', 'U', 'V', 'W'],
+  R: ['M', 'Q', 'S', 'W'],
+  S: ['M', 'N', 'O', 'R', 'T', 'W', 'X', 'Y'],
+  T: ['O', 'S', 'Y'],
+  U: ['P', 'Q', 'V'],
+  V: ['U', 'Q', 'W'],
+  W: ['Q', 'R', 'S', 'V', 'X'],
+  X: ['W', 'S', 'Y'],
+  Y: ['S', 'T', 'X']
+};
     var flag=1,clicked,selected,goat=1,isclicked=0,k,l,row,column,row_,col,n,p,col_,row__,index;
     var arr=Array(8)
     var div=Array(5);
@@ -154,6 +216,7 @@ box-shadow: inset 5px 5px 10px #a8a8a8,
     div[i] = Array(5);
     for (let j = 0; j < 5; j++) {
         div[i][j] = document.createElement('div');
+        div[i][j].setAttribute('data',data[i][j]);
         div[i][j].setAttribute('id',i+''+j);
         div[i][j].setAttribute('row',i);
         div[i][j].setAttribute('column',j);
@@ -232,42 +295,12 @@ box-shadow: inset 5px 5px 10px #a8a8a8,
            
                 clicked = e.target;
               if(isclicked==1){
+              
+              console.log(selected_data)
                  if((clicked.getAttribute('content'))=='1'){
                  selected.style='scale:1';
                    selected=clicked;
-                   row=parseInt(selected.getAttribute('row'));
-                  column=parseInt(selected.getAttribute('column'));
-                 console.log(row +'-' +column);
-                   row_=row+1;
-                   col=column-1;
-                   row__=row-1;
-                   col_=column+1;
-                   if (((row + column) % 2) == 0) {
-    arr = [
-        row_ + '' + col_,
-        row_ + '' + col,
-        row_ + '' + column,
-        row__ + '' + col,
-        row__ + '' + col_,
-        row__ + '' + column,
-        row + '' + col_,
-        row + '' + col
-    ];
-    console.log(arr);
-    const indexesToRemove = [];
-    arr.forEach((element, index) => {
-        if (parseInt(element) < 0 || parseInt(element) >= 5 || (element.includes('-') && element.indexOf('-') !== 0 && element.lastIndexOf('-') !== element.length - 1)) {
-            indexesToRemove.push(index);
-        }
-    });
-
-    for (let i = indexesToRemove.length - 1; i >= 0; i--) {
-        arr.splice(indexesToRemove[i], 1);
-    }
-    for (const p of arr) {
-        document.getElementById(p).style = 'background-color:green';
-    }
-}
+                   
                    selected.style='scale:2';
                    isclicked=1;
                    k=x;
@@ -286,8 +319,12 @@ box-shadow: inset 5px 5px 10px #a8a8a8,
                   flag=0;
                   
                   }
-                  else{
-                 
+                  else if(graph.hasOwnProperty(selected_data)){
+                  console.log("yo");
+                 for(let o=0;o<graph[selected_data].length;o++){
+                     if(graph[selected_data][o]==clicked.getAttribute('data')){
+                      
+                    
                  document.getElementById('p').innerHTML="Goat player turn remaining "+(21-parseInt(goat));
                 
              
@@ -301,6 +338,8 @@ box-shadow: inset 5px 5px 10px #a8a8a8,
                   board[k][l]='0';
                   console.log(board);
                   flag=1;
+                   }
+                 }
                   }
                   }
                   
@@ -309,6 +348,7 @@ box-shadow: inset 5px 5px 10px #a8a8a8,
                
                if((clicked.getAttribute('content'))=='1'){
                    selected=clicked;
+                   selected_data=selected.getAttribute('data');
                    selected.style='scale:2';
                    isclicked=1;
                    k=x;
