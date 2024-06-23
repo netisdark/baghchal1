@@ -64,25 +64,3 @@ canvas {
     transform: translate(-50%,-50%);
    /* Center the canvas */
 }
-
-@media (max-width: 768px) {
-    .container {
-        gap: 20px;
-    }
-
-    .box {
-        width: 20px;
-        height: 20px;
-        font-size: 20px;
-    }
-
-    .goat {
-        width: 40px;
-        height: 40px;
-        font-size: 40px;
-    }
-
-    .container1 {
-        font-size: 20px;
-    }
-}
