@@ -12,15 +12,6 @@ h1, p {
     text-align: center;
 }
 
-.container1 {
-    margin: 50px auto;
-    padding: 25px;
-    font-size: 25px;
-    width: 80%;
-    border: 1px solid black;
-    border-radius: 50px;
-}
-
 .container {
     position: fixed;
     top: 50%;
