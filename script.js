@@ -216,7 +216,7 @@ const graph = {
                  if((clicked.getAttribute('content'))=='1'){
                  selected.style='scale:1';
                    selected=clicked;
-                   
+                   selected_data=selected.getAttribute('data');
                    selected.style='scale:2';
                    isclicked=1;
                    k=x;
