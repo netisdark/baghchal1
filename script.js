@@ -98,6 +98,131 @@
   ['P', 'Q', 'R', 'S', 'T'],
   ['U', 'V', 'W', 'X', 'Y']
 ];
+const graph2 = {
+    A: [
+        { B: ['C'] },
+        { F: ['K'] },
+        { G: ['M'] }
+    ],
+    B: [
+        { C: ['D'] },
+        { G: ['L'] }
+    ],
+    C: [
+        { B: ['A'] },
+        { D: ['E'] },
+        { G: ['K'] },
+        { H: ['M'] },
+        { I: ['O'] }
+    ],
+    D: [
+        { C: ['B'] },
+        { I: ['N'] }
+    ],
+    E: [
+        { D: ['C'] },
+        { I: ['M'] },
+        { J: ['O'] }
+    ],
+    F: [
+        { G: ['H'] },
+        { K: ['P'] }
+    ],
+    G: [
+        { H: ['I'] },
+        { M: ['S'] },
+        { L: ['Q'] }
+    ],
+    I: [
+        { H: ['G'] },
+        { M: ['R'] },
+        { I: ['J'] }
+    ],
+    H: [
+        { G: ['F'] },
+        { M: ['R'] },
+        { I: ['J'] }
+    ],
+    J: [
+        { O: ['T'] },
+        { I: ['H'] }
+    ],
+    K: [
+        { G: ['C'] },
+        { F: ['A'] },
+        { P: ['V'] },
+        { L: ['M'] },
+        { Q: ['W'] }
+    ],
+    L: [
+        { G: ['B'] },
+        { Q: ['V'] },
+        { M: ['N'] }
+    ],
+    M: [
+        { L: ['K'] },
+        { G: ['A'] },
+        { Q: ['U'] },
+        { R: ['W'] },
+        { S: ['Y'] },
+        { I: ['E'] },
+        { N: ['O'] },
+        { H: ['C'] }
+    ],
+    N: [
+        { I: ['D'] },
+        { M: ['L'] },
+        { S: ['X'] }
+    ],
+    O: [
+        { I: ['C'] },
+        { N: ['M'] },
+        { S: ['W'] },
+        { T: ['Y'] },
+        { J: ['E'] }
+    ],
+    P: [
+        { K: ['F'] },
+        { Q: ['R'] }
+    ],
+    Q: [
+        { L: ['G'] },
+        { M: ['I'] },
+        { R: ['S'] }
+    ],
+    R: [
+        { M: ['H'] },
+        { S: ['T'] },
+        { Q: ['P'] }
+    ],
+    S: [
+        { R: ['Q'] },
+        { M: ['G'] },
+        { N: ['I'] }
+    ],
+    T: [
+        { O: ['J'] },
+        { S: ['R'] }
+    ],
+    U: [
+        { P: ['K'] },
+        { Q: ['M'] },
+        { V: ['W'] }
+    ],
+    V: [
+        { W: ['X'] },
+        { Q: ['L'] }
+    ]
+};
+
+function findCommon(graph2,node1,node2){
+    for(nodeCounter=0;nodeCounter<graph2[node1].length;nodeCounter++){
+        if((Object.keys(graph2[node1][nodeCounter])[0])===node2){
+            return graph2[node1][nodeCounter][node2][0];
+        }
+    }
+}
+
 const graph = {
   A: ['B', 'G', 'F'],
   B: ['A', 'G', 'C'],
@@ -125,6 +250,10 @@ const graph = {
   X: ['W', 'S', 'Y'],
   Y: ['S', 'T', 'X']
 };
+const getElementByDataAttribute = (attributeValue) => {
+    return document.querySelector(`.box[data="${attributeValue}"]`);
+  };
+  
     var flag=1,clicked,selected,goat=1,isclicked=0,k,l,row,column,row_,col,n,p,col_,row__,index;
     var arr=Array(8)
     var div=Array(5);
@@ -211,8 +340,7 @@ const graph = {
            
                 clicked = e.target;
               if(isclicked==1){
-              
-              console.log(selected_data)
+                
                  if((clicked.getAttribute('content'))=='1'){
                  selected.style='scale:1';
                    selected=clicked;
@@ -223,20 +351,29 @@ const graph = {
                    l=y;
            
                 }else if(clicked.getAttribute('content')=='2'){
-                 clicked.innerHTML=selected.innerHTML;
-                  isclicked=0;
-                  clicked.setAttribute('content','1');
+                    
+                var clicked_data=clicked.getAttribute('data');
+                  console.log(typeof clicked_data);
+                  const commonNode=findCommon(graph2,selected_data,clicked_data);
+                  console.log(selected_data+clicked_data+commonNode);
+                  const commonNodeData=getElementByDataAttribute(commonNode);
+                  if(commonNodeData.getAttribute('content')==='0'){
+                    isclicked=0;
+                  commonNodeData.setAttribute('content','1');
+                  commonNodeData.innerHTML=selected.innerHTML;
                   board[x][y]='1';
                   selected.style='scale:1';
                   selected.setAttribute('content','0');
                   selected.innerHTML="";
+                  clicked.innerHTML="";
                   board[k][l]='0';
                   console.log(board);
-                  flag=0;
+                  flag=1;
+                  }
+                  
                   
                   }
                   else if(graph.hasOwnProperty(selected_data)){
-                  console.log("yo");
                  for(let o=0;o<graph[selected_data].length;o++){
                      if(graph[selected_data][o]==clicked.getAttribute('data')){
                       
@@ -245,7 +382,7 @@ const graph = {
                 
              
                   selected.style='scale:1';
-                      clicked.innerHTML=selected.innerHTML;
+                    clicked.innerHTML=selected.innerHTML;
                   isclicked=0;
                   clicked.setAttribute('content','1');
                   board[x][y]=1;
