@@ -353,19 +353,22 @@ const getElementByDataAttribute = (attributeValue) => {
                 }else if(clicked.getAttribute('content')=='2'){
                     
                 var clicked_data=clicked.getAttribute('data');
-                  console.log(typeof clicked_data);
+                  
                   const commonNode=findCommon(graph2,selected_data,clicked_data);
-                  console.log(selected_data+clicked_data+commonNode);
                   const commonNodeData=getElementByDataAttribute(commonNode);
                   if(commonNodeData.getAttribute('content')==='0'){
                     isclicked=0;
                   commonNodeData.setAttribute('content','1');
                   commonNodeData.innerHTML=selected.innerHTML;
-                  board[x][y]='1';
+                  clicked.setAttribute('content','0');
                   selected.style='scale:1';
                   selected.setAttribute('content','0');
                   selected.innerHTML="";
                   clicked.innerHTML="";
+                  var row___=parseInt(commonNodeData.getAttribute('row'));
+                  var col___=parseInt(commonNodeData.getAttribute('column'));
+                  board[row___][col___]='1';
+                  board[x][y]='0';
                   board[k][l]='0';
                   console.log(board);
                   flag=1;
@@ -385,7 +388,7 @@ const getElementByDataAttribute = (attributeValue) => {
                     clicked.innerHTML=selected.innerHTML;
                   isclicked=0;
                   clicked.setAttribute('content','1');
-                  board[x][y]=1;
+                  board[x][y]='1';
                   selected.setAttribute('content','0');
                   selected.innerHTML="";
                   board[k][l]='0';
