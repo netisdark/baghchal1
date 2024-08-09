@@ -12,11 +12,12 @@
     <h1>BAGHCHAL</h1>
     <p id="p">Goat Player Turn remaining 20</p>
     <div style="display:flex;justify-content:center">
-        <button class="btn btn-success m-2" onclick="location.href='help.html'">Help</button>
-        <button class="btn btn-success m-2" onclick="location.href='playonline.html'">Play Online</button>
+        <button class="btn btn-success m-2" onclick="create_game()">Create Game</button>
+        <button class="btn btn-success m-2" onclick="location.href='index.html'">Back</button>
     </div>
     <canvas id="canvas" width="300" height="300"></canvas>
+    <div id="contexts" class="container"></div>
     <div class="container" id='content'></div>
-    <script src="script.js"></script>
+    <script src="script_online.js"></script>
 </body>
 </html>
