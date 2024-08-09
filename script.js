@@ -351,17 +351,10 @@ const getElementByDataAttribute = (attributeValue) => {
                    l=y;
            
                 }else if(clicked.getAttribute('content')=='2'){
-                    
-                var clicked_data=clicked.getAttribute('data');
-                  
-                  const commonNode=findCommon(graph2,selected_data,clicked_data);
-                  const commonNodeData=getElementByDataAttribute(commonNode);
-                  if(commonNodeData.getAttribute('content')==='0'){
-                    isclicked=0;
-                    document.getElementById('p').innerHTML="Goat player turn remaining "+(21-parseInt(goat));
-                  commonNodeData.setAttribute('content','1');
-                  commonNodeData.innerHTML=selected.innerHTML;
-                  clicked.setAttribute('content','0');
+                 clicked.innerHTML=selected.innerHTML;
+                  isclicked=0;
+                  clicked.setAttribute('content','1');
+                  board[x][y]='1';
                   selected.style='scale:1';
                   selected.setAttribute('content','0');
                   selected.innerHTML="";
