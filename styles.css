@@ -7,7 +7,10 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
 }
+a{
+    color:white;
 
+}
 h1, p {
     text-align: center;
 }
