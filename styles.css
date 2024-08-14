@@ -1,15 +1,10 @@
 body {
     background: #555;
 }
-
-* {
-    color: white; 
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-}
-a{
-    color:white;
-
+.navbar{
+    position:fixed;
+    top:0;
+    z-index:3;
 }
 h1, p {
     text-align: center;
@@ -25,7 +20,6 @@ h1, p {
     grid-template-columns: repeat(5, 30px);
     grid-template-rows: repeat(5, 30px);
     gap: 40px;
-    z-index:-3;
 }
 
 .goat {
@@ -55,6 +49,4 @@ canvas {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-   /* Center the canvas */
-    z-index:-4;
 }
