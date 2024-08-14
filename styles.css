@@ -56,5 +56,5 @@ canvas {
     left: 50%;
     transform: translate(-50%,-50%);
    /* Center the canvas */
-    z-index:-2;
+    z-index:-4;
 }
