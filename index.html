@@ -55,11 +55,16 @@
             const video = document.getElementById('myVideo');
             video.muted = true;  // Ensure the video is muted
             video.play();  // Force play on load
-            
+
             // Prevent pausing of the video
             video.addEventListener('pause', function () {
                 video.play();
             });
+
+            // Remove the video after 15 seconds
+            setTimeout(function () {
+                video.remove();
+            }, 15000); // 15000 ms = 15 seconds
         });
     </script>
 
