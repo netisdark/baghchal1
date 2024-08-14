@@ -6,6 +6,7 @@ body {
     top:0;
     z-index:3;
     width:100%;
+    bachground:rgba(0,0,0,0.5);
 }
 h1, p {
     text-align: center;
