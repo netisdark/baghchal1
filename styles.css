@@ -25,6 +25,7 @@ h1, p {
     grid-template-columns: repeat(5, 30px);
     grid-template-rows: repeat(5, 30px);
     gap: 40px;
+    z-index:-3;
 }
 
 .goat {
@@ -55,4 +56,5 @@ canvas {
     left: 50%;
     transform: translate(-50%,-50%);
    /* Center the canvas */
+    z-index:-2;
 }
