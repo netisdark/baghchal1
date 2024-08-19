@@ -15,6 +15,11 @@ body {
 
 h1, p {
     text-align: center;
+    color:white;
+}
+#p{
+    position:absolute;
+    bottom:10;
 }
 #content {
     position: fixed;
