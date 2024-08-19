@@ -6,17 +6,7 @@
     <title>BAGHCHAL</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="styles.css" rel="stylesheet">
-    <style>
-        #content video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 2;
-        }
-    </style>
+    
 </head>
 <body>
     <nav class="navbar navbar-expand-lg border-bottom border-body">
@@ -44,29 +34,9 @@
     <canvas id="canvas" width="300" height="300"></canvas>
 
     <div class="container" id="content">
-        <video id="myVideo" autoplay muted loop playsinline>
-            <source src="video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const video = document.getElementById('myVideo');
-            video.muted = true;  // Ensure the video is muted
-            video.play();  // Force play on load
-
-            // Prevent pausing of the video
-            video.addEventListener('pause', function () {
-                video.play();
-            });
-
-            // Remove the video after 15 seconds
-            setTimeout(function () {
-                video.remove();
-            }, 15000); // 15000 ms = 15 seconds
-        });
-    </script>
+    
 
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
